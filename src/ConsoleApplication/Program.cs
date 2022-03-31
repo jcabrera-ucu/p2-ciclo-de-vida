@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using ClassLibrary;
 
 namespace ConsoleApplication
@@ -19,8 +20,19 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-            var train = new Train();
-            train.StartEngines();
+            for (int i = 0; i < 10000000; i++)
+            {
+                new Train($"{i}");
+            }
+
+            Console.WriteLine($"Total: {Train.Count}");
+
+            var t1 = new Train("A");
+            var t2 = new Train("A");
+            var t3 = new Train("B");
+            Console.WriteLine($"{t1 == t2}");
+            Console.WriteLine($"{t2 == t3}");
+
             Console.WriteLine("Hello World!");
         }
     }

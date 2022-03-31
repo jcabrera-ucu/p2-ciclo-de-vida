@@ -20,6 +20,31 @@ namespace ClassLibrary
         public bool IsEngineStarted { get; private set; }
 
         /// <summary>
+        /// Nombre del tren
+        /// </summary>
+        public string Id { get; }
+
+        /// <summary>
+        /// Cuenta la cantidad de instancias activas de la clase Train 
+        /// </summary>
+        public static int Count { get; private set; }
+
+        /// <summary>
+        /// Crea un Train con un identificador dado.
+        /// </summary>
+        /// <param name="id">Cadena identificadora del tren</param>
+        public Train(string id)
+        {
+            Train.Count += 1;
+            this.Id = id;
+        }
+
+        ~Train()
+        {
+            Train.Count -= 1;
+        }
+
+        /// <summary>
         /// Enciende las máquinas del tren.
         /// </summary>
         /// <returns>
